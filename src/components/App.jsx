@@ -17,7 +17,7 @@ class App extends Component {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          fontSize: 22,
+          fontSize: 16,
           textTransform: 'uppercase',
           color: '#010101',
         }}

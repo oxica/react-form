@@ -5,6 +5,8 @@ class Form extends Component {
   state = {
     tag: '',
     name: '',
+    experience: 'Junior',
+    license: false,
   };
 
   handleChange = e => {
@@ -25,6 +27,10 @@ class Form extends Component {
     e.preventDefault();
     this.props.onSubmit(this.state);
     this.reset();
+  };
+
+  handleLicenseChange = e => {
+    this.setState({ license: e.currentTarget.checked });
   };
 
   reset = () => {
@@ -55,7 +61,55 @@ class Form extends Component {
             onChange={this.handleChange}
           />
         </label>
-        <button type="submit">Submit</button>
+
+        <p>Developer level:</p>
+        <label>
+          <input
+            type="radio"
+            name="experience"
+            value="Junior"
+            onChange={this.handleChange}
+            checked={this.state.experience === 'Junior'}
+          />
+          Junior
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="experience"
+            value="Middle"
+            onChange={this.handleChange}
+            checked={this.state.experience === 'Middle'}
+          />
+          Middle
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="experience"
+            value="Senior"
+            onChange={this.handleChange}
+            checked={this.state.experience === 'Senior'}
+          />
+          Senior
+        </label>
+        <br />
+
+        <label>
+          <input
+            type="checkbox"
+            name="license"
+            checked={this.state.license}
+            onChange={this.handleLicenseChange}
+          />
+          I agree
+        </label>
+
+        <br />
+        <button type="submit" disabled={!this.state.license}>
+          {' '}
+          Submit{' '}
+        </button>
       </form>
     );
   }
